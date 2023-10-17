@@ -147,11 +147,6 @@ istream& operator>>(istream& istr, TSet& s) // ввод
             istr >> st;
         } while (st != ',' && st != '}');
     } while (st != '}');
-
-
-
-
-
     return istr;
 }
 

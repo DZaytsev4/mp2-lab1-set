@@ -134,9 +134,9 @@ int TBitField::operator!=(const TBitField &bf) const // сравнение
 
 TBitField TBitField::operator|(const TBitField &bf) // операция "или"
 {
-    int l;
+    int l; 
     if (bf.BitLen > BitLen) {
-        l = bf.BitLen;
+        l = bf.BitLen; //5 = 00000101 7 = 0000111 
     }
     else {
         l = BitLen;
@@ -144,7 +144,7 @@ TBitField TBitField::operator|(const TBitField &bf) // операция "или"
     TBitField Field(l);
 
     for (int i = 0; i < bf.MemLen; i++) {
-        Field.pMem[i] = pMem[i] | bf.pMem[i];
+        Field.pMem[i] = pMem[i] | bf.pMem[i]; //00001101 00000010 = 00001111
     }
     return Field;
 }
@@ -169,12 +169,12 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
     return Field;
 }
 
-TBitField TBitField::operator~(void) // отрицание
+TBitField TBitField::operator~(void) // отрицание 
 {
 
     TBitField res(*this);
-    for (int i = 0; i < MemLen - 1; i++) {
-        res.pMem[i] = ~res.pMem[i];
+    for (int i = 0; i < MemLen - 1; i++) { 
+        res.pMem[i] = ~res.pMem[i]; 
     }
     if (MemLen > 0) {
         for (int i = (MemLen - 1) * 32; i < res.BitLen; i++) {
@@ -196,7 +196,7 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
     int i = 0;
     char ch;
     do { istr >> ch; } while (ch != ' ');
-    while (1)
+    while (true)
     {
         istr >> ch;
         if (ch == '0')
